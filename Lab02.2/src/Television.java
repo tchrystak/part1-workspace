@@ -1,7 +1,29 @@
 public class Television {
 
+  public static final int MIN_VOLUME = 0;
+  public static final int MAX_VOLUME = 100;
+
+  private static int instanceCount = 0;
+
   private String brand;
   private int volume;
+
+  // constructor method
+
+  public Television() {
+    instanceCount++;
+  }
+
+  public Television(String brand) {
+    this();
+    setBrand(brand);
+  }
+
+  public Television(String brand, int volume) {
+    this(brand);
+    setVolume(volume);
+  }
+
 
   public void turnOn() {
     boolean isConnected = verifyInternetConnection();
@@ -10,6 +32,10 @@ public class Television {
 
   public void turnOff() {
     System.out.println("The " + brand + " television is off");
+  }
+
+  public static int getInstanceCount() {
+    return instanceCount;
   }
 
   public String getBrand() {
@@ -25,7 +51,11 @@ public class Television {
   }
 
   public void setVolume(int volume) {
-    this.volume = volume;
+    if (volume < MIN_VOLUME || volume > MAX_VOLUME) {
+      System.out.printf("%d is invalid; volume must be between %d and %d (inclusive)", volume, MIN_VOLUME, MAX_VOLUME);
+    } else {
+      this.volume = volume;
+    }
   }
 
   private boolean verifyInternetConnection() {
@@ -33,6 +63,6 @@ public class Television {
   }
 
   public String toString() {
-   return "Television: brand=" + getBrand() + ", volume=" + getVolume();
+    return "Television: brand=" + getBrand() + ", volume=" + getVolume();
   }
 }
