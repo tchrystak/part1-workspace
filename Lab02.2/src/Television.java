@@ -43,7 +43,18 @@ public class Television {
   }
 
   public void setBrand(String brand) {
-    this.brand = brand;
+    //if (brand.equals("Samsung") || brand.equals("LG") || brand.equals("Sony") || brand.equals("Toshiba") )
+    switch (brand) {
+      case "Samsung":
+      case "LG":
+      case "Sony":
+      case "Toshiba":
+        this.brand = brand;
+        break;
+      default:
+        System.out.printf("%s is invalid; only Samsung, LG, Sony, and Toshiba are allowed.%n",
+            brand);
+    }
   }
 
   public int getVolume() {
@@ -52,7 +63,8 @@ public class Television {
 
   public void setVolume(int volume) {
     if (volume < MIN_VOLUME || volume > MAX_VOLUME) {
-      System.out.printf("%d is invalid; volume must be between %d and %d (inclusive)", volume, MIN_VOLUME, MAX_VOLUME);
+      System.out.printf("%d is invalid; volume must be between %d and %d (inclusive)", volume,
+          MIN_VOLUME, MAX_VOLUME);
     } else {
       this.volume = volume;
     }

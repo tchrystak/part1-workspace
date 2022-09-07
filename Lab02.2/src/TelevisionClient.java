@@ -3,7 +3,7 @@ public class TelevisionClient {
   public static void main(String[] args) {
     Television tv1 = new Television();
     tv1.setBrand("Zenith");
-    tv1.setVolume(125);
+    tv1.setVolume(25);
 
     tv1.turnOn();
     tv1.turnOff();
