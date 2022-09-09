@@ -8,6 +8,8 @@ public class Television {
   private String brand;
   private int volume;
 
+  private DisplayType display = DisplayType.LED;
+
   // constructor method
 
   public Television() {
@@ -24,6 +26,10 @@ public class Television {
     setVolume(volume);
   }
 
+  public Television(String brand, int volume, DisplayType display) {
+    this(brand, volume);
+    setDisplay(display);
+  }
 
   public void turnOn() {
     boolean isConnected = verifyInternetConnection();
@@ -73,8 +79,16 @@ public class Television {
   private boolean verifyInternetConnection() {
     return true;
   }
+  public DisplayType getDisplay() {
+    return display;
+  }
+
+  public void setDisplay(DisplayType display) {
+    this.display = display;
+  }
+
 
   public String toString() {
-    return "Television: brand=" + getBrand() + ", volume=" + getVolume();
+    return "Television: brand = " + getBrand() + ", volume = " + getVolume() + ", DisplayType = " + getDisplay();
   }
 }

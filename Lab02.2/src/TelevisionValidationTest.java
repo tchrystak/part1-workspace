@@ -1,5 +1,5 @@
 public class TelevisionValidationTest {
-// TODO: 9/7/2022  Work on this later
+
   public static void main(String[] args) {
     Television tv = new Television();
     tv.setBrand("Samsung");
