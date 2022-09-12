@@ -18,6 +18,7 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
+import static java.time.DayOfWeek.MONDAY;
 import static java.time.temporal.TemporalAdjusters.*;
 
 class DerivedDateTimeTest {
@@ -43,7 +44,9 @@ class DerivedDateTimeTest {
      */
     public static void testPresidentsFirst100Days() {
         // TODO
-
+        LocalDate today = LocalDate.of(2017, Month.JANUARY, 20);
+        LocalDate date100 = today.plusDays(100);
+        System.out.println(date100);
     }
 
     /**
@@ -71,6 +74,9 @@ class DerivedDateTimeTest {
      */
     public static void testEarlyRetirement() {
         // TODO
+        LocalDate today = LocalDate.of(2022, 11,8);
+        LocalDate retire = today.plusYears((long) 34.5);
+        System.out.println(retire);
     }
 
     /**
@@ -82,9 +88,11 @@ class DerivedDateTimeTest {
      */
     public static void testLaborDay() {
         // TODO
-//        LocalDate laborDay = LocalDate
-//            .of(1996, 11, 8)
-//            .with(ChronoField.MONTH_OF_YEAR, 9)
+        LocalDate bday = LocalDate.of(1996, 11, 8);
+        LocalDate sept1 = bday.withMonth(9).withDayOfMonth(1);
+        LocalDate laborDay = sept1.with(firstInMonth(MONDAY));
+        System.out.println(laborDay);
+        System.out.println(laborDay.getDayOfWeek());
     }
 
     /**
@@ -95,8 +103,10 @@ class DerivedDateTimeTest {
      */
     public static void testElectionDay() {
         // TODO
-//        LocalDate electionDay = LocalDate
-//            .of(2022, 11, 1)
+        LocalDate nov1 = LocalDate.of(2024, 11, 1);
+        LocalDate electionDay = nov1.with(firstInMonth(MONDAY)).plusDays(1);
+        System.out.println(electionDay);
+        System.out.println(electionDay.getDayOfWeek());
     }
 
     /**
