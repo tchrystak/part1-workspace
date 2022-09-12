@@ -22,17 +22,22 @@ class DateTimeTest {
      * To run one test method at a time, uncomment the call to the one you want to execute.
      */
     public static void main(String[] args) {
-        // testNow();
-        // testCreate();
-        // testParse();
-        // testFormat();
+         testNow();
+         testCreate();
+         testParse();
+         testFormat();
     }
 
     /**
      * TASK: create current date, time, and date-time via now() and then print them.
      */
     public static void testNow() {
-        // TODO
+        LocalDate today = LocalDate.now();
+        LocalDate now = LocalDate.now();
+        LocalDateTime timestamp = LocalDateTime.now();
+        System.out.println(today);
+        System.out.println(now);
+        System.out.println(timestamp);
     }
 
     /**
@@ -40,8 +45,12 @@ class DateTimeTest {
      */
     public static void testCreate() {
         // TODO: create your birthday via of(). What day of the week were you born on?
+        LocalDate bday = LocalDate.of(1996, 8, 11);
+        System.out.println(bday);
 
         // TODO: use of() to create a value representing the 1st lunar landing - it happened on 7/20/69 at 3:18pm Eastern Time.
+        LocalDateTime lunar = LocalDateTime.of(1969, 7, 20, 15, 18, 23);
+        System.out.println(lunar);
         // NOTE: ignore time-zone, just assume Eastern Time is the local time.
     }
 
@@ -50,8 +59,11 @@ class DateTimeTest {
      */
     public static void testParse() {
         // TODO: create your birthday by parsing a text representation in standard format ("yyyy-MM-dd").
-
+        LocalDate bday2 = LocalDate.parse("1996-11-08");
+        System.out.println(bday2);
         // OPTIONAL: now create it by parsing text in the form "2/6/2014" (this is Feb 6, not Jun 2).
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+
     }
 
     /**
@@ -61,9 +73,17 @@ class DateTimeTest {
         LocalDate hastings = LocalDate.of(1066, 10, 14);
 
         // TODO: 10/14/1066
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String display = hastings.format(formatter);
+        System.out.println(display);
         // TODO: 14-10-1066
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String display1 = hastings.format(formatter1);
+        System.out.println(display1);
 
         // OPTIONAL: October 14, 1066
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+        String display2 = hastings.format(formatter2);
+        System.out.println(display2);
     }
 }
