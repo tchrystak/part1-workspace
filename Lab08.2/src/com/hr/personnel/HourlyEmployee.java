@@ -24,8 +24,11 @@ public class HourlyEmployee extends Employee {
     setHours(hours);
   }
 
-  // TODO: 9/13/2022 Generate setters and getters for rate and hours
+  public void pay() {
+    System.out.printf("%s is paid hourly, for a total of %,.2f%n", getName(), getHours() * getRate());
+  }
 
+  //  setters and getters
   public double getRate() {
     return rate;
   }
@@ -46,8 +49,10 @@ public class HourlyEmployee extends Employee {
 
   @Override
   public String toString() {
-    return String.format("%s, rate=%.2f, hours=%.1f", super.toString(), getRate(), getHours());
+//    return super.toString() + ", rate = " + rate + ", hours = " + hours;
+    return String.format("%s, rate= %.2f, hours= %.1f", super.toString(), getRate(), getHours());
 
-    //"Name:" + getName() + "HireDate:" + getHireDate() + "Rate:" + getRate() + "Hours:" + getHours();
+    // One of these 2 ways on lines 49 & 50...
+    // %f means use a decimal point...float; 2f is 2 digits after the decimal, 1f is 1 digit after the decimal
   }
 }
