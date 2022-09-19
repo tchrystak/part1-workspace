@@ -64,8 +64,8 @@ public class PoemClient {
     private static void writePoem() {
         // TODO
         try (PrintWriter writer = new PrintWriter(new FileWriter("haiku.txt"))) {
-            writer.println("An old silent pond\n");
-            writer.println("A frog jumps into the pond\n");
+            writer.println("An old silent pond");
+            writer.println("A frog jumps into the pond");
             writer.println("Splash! Silence again.");
         } catch (IOException e) {
             e.printStackTrace();
